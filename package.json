@@ -1,6 +1,6 @@
 {
   "name": "browserify-aws-sdk",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "A Browserify transform to support aws-sdk for Node.js",
   "main": "index.js",
   "repository": {
