@@ -21,7 +21,7 @@ To use from the command line:
 # include all services
 browserify -g browserify-aws-sdk main.js
 # include specified services only
-browserify -g [ browserify-aws-sdk -services "ec2,route53" ] main.js
+browserify -g [ browserify-aws-sdk --services="ec2,route53" ] main.js
 ```
 
 or from the api:
