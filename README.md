@@ -1,2 +1,2 @@
 # browserify-aws-sdk
-Browserify transform to require aws-sdk library
+A Browserify transform to support aws-sdk for Node.js
