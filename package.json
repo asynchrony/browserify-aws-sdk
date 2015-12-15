@@ -26,5 +26,11 @@
     "test": "tests"
   },
   "author": "World Wide Technology Asynchrony Labs, Inc.",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "aws",
+    "aws-sdk",
+    "browserify",
+    "browserify-transform"
+  ]
 }
