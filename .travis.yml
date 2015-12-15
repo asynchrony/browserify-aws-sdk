@@ -4,3 +4,9 @@ node_js:
   - "0.12"
   - "4"
   - "stable"
+deploy:
+  provider: script
+  script: ./npm-publish.sh
+  on:
+    node: "stable"
+    tags: true
