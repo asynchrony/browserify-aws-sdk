@@ -2,7 +2,7 @@ var transformTools = require("browserify-transform-tools");
 var path = require("path");
 
 module.exports = transformTools.makeRequireTransform(
-    "fite-browserify-aws-sdk",
+    "browserify-aws-sdk",
     {
         evaluateArguments: true,
         includeExtensions: [ "js" ]
