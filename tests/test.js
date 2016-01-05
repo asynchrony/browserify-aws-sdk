@@ -69,7 +69,6 @@ function testTransformFailure(service, bundleFile, transformOptions, done) {
 }
 
 function testTransform(bundleFile, transformOptions, callback) {
-  var samplePath = path.join(__dirname, "./sample.js");
   var bundlePath = path.join(__dirname, bundleFile);
   var bundler = browserify({
     standalone: "test",
