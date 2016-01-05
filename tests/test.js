@@ -44,6 +44,17 @@ describe("index", function() {
       testTransformFailure("EC2", "./bundle-none.js", { global: true, services: [ ] }, done);
     });
   });
+  
+  it("doesn't blow up on jws", function (done) {
+    this.timeout(10*1000);
+    testTransform("./input-jws.js", "./bundle-jws.js", { global: true }, function(jws) {
+      if (!jws) {
+        done(new Error("jws was not returned"));
+      } else {
+        done();
+      }
+    });
+  });
 });
 
 function testTransformSuccess(service, bundleFile, transformOptions, done) {
