@@ -47,7 +47,7 @@ describe("index", function() {
 });
 
 function testTransformSuccess(service, bundleFile, transformOptions, done) {
-  testTransform(bundleFile, transformOptions, function(AWS) {
+  testTransform("./input-aws.js", bundleFile, transformOptions, function(AWS) {
     try {
       new AWS[service]();
       done();
@@ -58,7 +58,7 @@ function testTransformSuccess(service, bundleFile, transformOptions, done) {
 }
 
 function testTransformFailure(service, bundleFile, transformOptions, done) {
-  testTransform(bundleFile, transformOptions, function(AWS) {
+  testTransform("./input-aws.js", bundleFile, transformOptions, function(AWS) {
     try {
       new AWS[service]();
       done(new Error("service call did not fail"));
@@ -68,7 +68,8 @@ function testTransformFailure(service, bundleFile, transformOptions, done) {
   });
 }
 
-function testTransform(bundleFile, transformOptions, callback) {
+function testTransform(sampleFile, bundleFile, transformOptions, callback) {
+  var samplePath = path.join(__dirname, sampleFile);
   var bundlePath = path.join(__dirname, bundleFile);
   var bundler = browserify({
     standalone: "test",
@@ -80,10 +81,10 @@ function testTransform(bundleFile, transformOptions, callback) {
       process: function() {},
     }
   });
-  bundler.require("aws-sdk");
+  bundler.add(samplePath);
   bundler.transform("./index", transformOptions);
   bundler.bundle().pipe(fs.createWriteStream(bundlePath)).on("finish", function() {
-    var AWS = require(bundlePath);
-    callback(AWS);
+    var result = require(bundlePath);
+    callback(result);
   });
 }
